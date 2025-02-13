@@ -34,6 +34,8 @@ embeddings = model.encode(paragraphs)
 
 # Create a dictionary to store embeddings for each person
 person_embeddings = {attendees_map[paragraph]: embedding for paragraph, embedding in zip(paragraphs, embeddings)}
+np.save("classmates_embeddings.npy", person_embeddings)
+
 
 # Reducing dimensionality of embedding data, scaling to coordinate domain/range
 reducer = umap.UMAP(random_state=42)
