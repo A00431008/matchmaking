@@ -33,3 +33,17 @@ A flattened embedding space of names clustered based on their interests using th
 5. Run all cells
 6. Bask in the glory of having an awesome new poster
 7. Make two (!) cool interactive visualizations
+
+Embedding Sensitivity Tests
+We tested two sentence embedding models, all-MiniLM-L6-v2 and all-mpnet-base-v2, to see how differently they measure similarity based on personal descriptions. While both models give similar overall rankings, they sometimes change the order of who is most similar.
+
+My Description:
+"I like watching movies, playing cricket, eFootball, and collecting sneakers."
+
+Quantitative Analysis:
+The two models mostly agree, but there are differences. For example, Ethan Cooke was ranked 3rd by Model 1 but dropped to 8th in Model 2. Meanwhile, Somto Muotoe moved up from 11th to 3rd, and Sriram Ramesh improved from 8th to 4th. This suggests that each model picks up on different aspects of similarity.
+
+Qualitative Observations:
+Model 2 (all-mpnet-base-v2) seems to understand deeper connections, changing who is considered more similar. For example, Somto Muotoe (who likes reading, cycling, and video games) was ranked low in Model 1 but much higher in Model 2, likely because Model 2 connects multiple interests better. On the other hand, Ethan Cooke (who enjoys hiking and board games) dropped in ranking, suggesting that Model 1 (MiniLM) may have focused more on individual words rather than overall meaning.
+
+These differences show that choosing the right model matters. While both models give similar results, small ranking changes can affect how we group people based on their interests.
