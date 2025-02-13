@@ -4,7 +4,7 @@ _"Words can't describe how unique your interests are... but coordinates can" - S
 
 A flattened embedding space of names clustered based on their interests using the sentence-transformers all-MiniLM-L6-v2 model. Created for the UW Startups S23 Kickoff event with guidance from [Jacky Zhao](https://jzhao.xyz/) and [Sean Ashley](https://www.linkedin.com/in/sean-ashley). [Simha Kalimipalli](https://github.com/Simha-Kalimipalli) later aded interactivity!
 
-![Sample output of script](https://github.com/A00431008/matchmaking/visualization.png?raw=true)
+![Sample output of script](https://github.com/A00431008/matchmaking/blob/main/visualization.png)
 
 ## Instructions for use
 
