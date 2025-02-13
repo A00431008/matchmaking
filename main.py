@@ -28,29 +28,29 @@ with open(project_path + 'classmates.csv', newline='') as csvfile:
         attendees_map[paragraph] = name
 
 # Generate sentence embeddings
-model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+model = SentenceTransformer('sentence-transformers/all-mpnet-base-v2')
 paragraphs = list(attendees_map.keys())
 embeddings = model.encode(paragraphs)
 
 # Create a dictionary to store embeddings for each person
 person_embeddings = {attendees_map[paragraph]: embedding for paragraph, embedding in zip(paragraphs, embeddings)}
 
-# Reducing dimensionality of embedding data, scaling to coordinate domain/range
-reducer = umap.UMAP(random_state=42)
-scaler = StandardScaler()
-scaled_data = scaler.fit_transform(list(person_embeddings.values()))
-reduced_data = reducer.fit_transform(scaled_data)
+# # Reducing dimensionality of embedding data, scaling to coordinate domain/range
+# reducer = umap.UMAP(random_state=42)
+# scaler = StandardScaler()
+# scaled_data = scaler.fit_transform(list(person_embeddings.values()))
+# reduced_data = reducer.fit_transform(scaled_data)
+#
+# # Creating lists of coordinates with accompanying labels
+# x = [row[0] for row in reduced_data]
+# y = [row[1] for row in reduced_data]
+# label = list(person_embeddings.keys())
 
-# Creating lists of coordinates with accompanying labels
-x = [row[0] for row in reduced_data]
-y = [row[1] for row in reduced_data]
-label = list(person_embeddings.keys())
-
-# Plotting and annotating data points
-plt.scatter(x,y)
-for i, name in enumerate(label):
-    plt.annotate(name, (x[i], y[i]), fontsize="3")
-
-# Clean-up and Export
-plt.axis('off')
-plt.savefig(project_path+'visualization.png', dpi=800)
+# # Plotting and annotating data points
+# plt.scatter(x,y)
+# for i, name in enumerate(label):
+#     plt.annotate(name, (x[i], y[i]), fontsize="3")
+#
+# # Clean-up and Export
+# plt.axis('off')
+# plt.savefig(project_path+'visualization.png', dpi=800)800
