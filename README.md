@@ -79,3 +79,12 @@ The two models mostly agree, but there are differences. For example, Ethan Cooke
 Model 2 (all-mpnet-base-v2) seems to understand deeper connections, changing who is considered more similar. For example, Somto Muotoe (who likes reading, cycling, and video games) was ranked low in Model 1 but much higher in Model 2, likely because Model 2 connects multiple interests better. On the other hand, Ethan Cooke (who enjoys hiking and board games) dropped in ranking, suggesting that Model 1 (MiniLM) may have focused more on individual words rather than overall meaning.
 
 These differences show that choosing the right model matters. While both models give similar results, small ranking changes can affect how we group people based on their interests.
+
+## Dimension Reduction analysis
+In the original model, the visualizations were highly sensitive to the random seed, with significant shifts in the 2D UMAP space as the seed changed. This instability suggests that the initial model was not robust, particularly with the small dataset, and highlights the impact of random initialization on the results.
+
+After optimizing the parameters using Optuna, the tuned model demonstrated more stability in the visualizations, though the Spearman correlation values still varied slightly across seeds (Seed 42: 0.3629, Seed 10: 0.2201, Seed 20: 0.1957, Seed 30: 0.2176). The tuned visualizations were more consistent, with individuals sharing the same interests grouped together. However, there was still some shifting in the 2D space when changing the seed, indicating that UMAP generally clusters based on shared interests but remains sensitive to seed variation.
+
+Regarding the tuned model, it successfully grouped individuals with exactly the same interests, such as those who mentioned biking, hiking, swimming. However, it struggled to differentiate between semantically similar phrases like “I love biking” and “I love cycling” This suggests that while UMAP is effective at capturing broad patterns in the data, it has limitations in understanding subtle language differences. 
+
+The optimization process involved careful parameter tuning for n_neighbors, spread and min_dist, these parameters were chosen because they directly affect clustering tightness, local vs global structure, and the overall density of data, which are key factors in improving UMAP performance. We didn't tune the metric because cosine similarity was already a good fit for capturing semantic relationships between sentence embeddings and was sufficient for our needs.
