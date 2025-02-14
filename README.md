@@ -34,6 +34,38 @@ A flattened embedding space of names clustered based on their interests using th
 6. Bask in the glory of having an awesome new poster
 7. Make two (!) cool interactive visualizations
 
+## Data Analysis
+
+To analyze the impact of sentence modifications on embeddings, we selected three sentences and made both **minor** (synonym replacement) and **major** (sentence restructuring) changes. We then computed the cosine similarity between the original and modified embeddings to assess how much the meaning was affected.
+
+### Changes Made:
+| Name                     | Original Description | Modified Description |
+|--------------------------|----------------------|----------------------|
+| **Sudeep Raj Badal**  | "I like listening to music, reading, going on long drives and watching movies." | "Exploring new places on long drives, immersing myself in books, and enjoying music and films are my favorite pastimes." |
+| **Mohammed Abdul Thoufiq**  | "I like watching movies, playing cricket, efootball and collecting sneakers." | "I have a passion for cricket and gaming, enjoy collecting sneakers, and love immersing myself in great films." |
+| **Louise Fear**  | "I like reading, playing video games, and baking." | "Baking, reading books, and playing video games are my favorite hobbies." |
+
+### Results:
+| Name                     | Cosine Similarity |
+|--------------------------|------------------|
+| **Sudeep Raj Badal**     | **0.7096** (Significant change) |
+| **Mohammed Abdul Thoufiq** | **0.7868** (Moderate change) |
+| **Louise Fear**          | **0.8755** (Minimal change) |
+
+### Insights:
+1. **Minor wording changes (synonyms, slight rephrasing) resulted in high similarity (~0.87).**  
+   - Example: "playing video games" → "enjoying video games" had minimal impact.  
+
+2. **Sentence restructuring had a moderate effect (~0.78).**  
+   - Example: "watching movies, playing cricket, efootball, and collecting sneakers" → "passion for cricket and gaming, enjoy collecting sneakers, and love immersing myself in great films" introduced new structure but kept core ideas.  
+
+3. **Conceptual shifts caused the largest changes (~0.70).**  
+   - Example: "going on long drives" → "exploring new places on long drives" changed the meaning enough to significantly alter the embedding representation.  
+
+### Summery of Data Analysis:
+The results indicate that while embeddings are resistant to minor rewording, **structural modifications and conceptual changes significantly impact similarity scores**. This is crucial for applications like clustering, retrieval, and text classification, where sentence meaning must be preserved.
+
+
 ## Embedding Sensitivity Tests
 We tested two sentence embedding models, all-MiniLM-L6-v2 and all-mpnet-base-v2, to see how differently they measure similarity based on personal descriptions. While both models give similar overall rankings, they sometimes change the order of who is most similar.
 
