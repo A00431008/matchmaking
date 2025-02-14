@@ -62,7 +62,7 @@ To analyze the impact of sentence modifications on embeddings, we selected three
 3. **Conceptual shifts caused the largest changes (~0.70).**  
    - Example: "going on long drives" → "exploring new places on long drives" changed the meaning enough to significantly alter the embedding representation.  
 
-### Summery of Data Analysis:
+
 The results indicate that while embeddings are resistant to minor rewording, **structural modifications and conceptual changes significantly impact similarity scores**. This is crucial for applications like clustering, retrieval, and text classification, where sentence meaning must be preserved.
 
 
