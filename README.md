@@ -34,6 +34,27 @@ A flattened embedding space of names clustered based on their interests using th
 6. Bask in the glory of having an awesome new poster
 7. Make two (!) cool interactive visualizations
 
+## What are Embeddings?
+
+Embeddings represent words or sentences in a way that computers can understand and process, enabling them to use language like humans. Unlike humans, for whom words carry intuitive meaning, computers see words as mere sequences of characters (e.g., "iklvnmlrek," "23kj420," "!@#$%$%"). Since, computers don't have any sense of meaning of words they cannot really understand what those sequence of characters mean or how they are related to each other. Embeddings provide a mathematical representation that helps computers relate words to each other and derive meaning out of them.
+
+To visualize embeddings, imagine them as points on a map. Instead of storing words as letters, embeddings convert them into numerical patterns (like coordinates) that reflect relationships. For instance, "like" and "love" are close, while "love" and "hate" are opposites.
+
+Lets try to convert some words into embedding-like representation so we can understand the concept better. With Calgary as the origin, imagining the word "like" as Banff, "love" as Kamloops, "hate" as Regina and the word "up" as Edmonton they can be represented as the following:
+    
+    * like --> Banff(West, 128km)
+    * love --> Kamloops(West, 620km)
+    * hate --> Regina(East, 750km)
+    * up --> Edmonton(North, 300km)
+
+Here Banff and Kamloops are both west while Regina is east, the computer understands that "like" and "love" are similar but "love" is stronger while "hate" is completely opposite. The distance from the origin represents intensity. Similarly, the word "up" would be positioned north of Calgary (e.g., Edmonton) because "up" is a direction, whereas "like," "love," and "hate" are emotions. "Hate" is the negative of "like," but "up" is neither similar nor opposite—it exists in a separate dimension and hence a computer understands up is unrelated to the others.
+
+In the classmates.csv file, there are a number of interests posted by different people. When a computer processes those sentences by using embeddings, it can map entire sentences into a numerical space where similar sentences are closer together and unrelated sentences are farther apart. By getting these numeric coordinates for sentences (also known as Sentence Embeddings) it is now possible to tell whose interests are closer while whose interests are not similar.
+
+For example: From classmates.csv file, Sudeep likes watching movies (similar to Amit and Thoufiq) so they would have similar/close coordinates however Thoufiq and Amit both like "Playing Cricket" so they would have more similar coordinates than Sudeep with them. Louise on the other hand likes reading (which is similar to Amit and Sudeep) so Louise, Amit and Sudeep would be closer in that sense. However Louise likes baking as well which is dissimilar all the three. So Sentence embeddings would capture all these relations and then provide coordinates to Amit, Louise, Sudeep and Thoufiq showing how similar/dissimilar their interests are.  
+
+This is also exactly what we aim to do in this project: use embeddings to analyze classmates.csv and group people with similar interests based on the distances between their sentence embeddings.
+
 ## Data Analysis
 
 To analyze the impact of sentence modifications on embeddings, we selected three sentences and made both **minor** (synonym replacement) and **major** (sentence restructuring) changes. We then computed the cosine similarity between the original and modified embeddings to assess how much the meaning was affected.
