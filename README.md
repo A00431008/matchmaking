@@ -47,7 +47,9 @@ Lets try to convert some words into embedding-like representation so we can unde
     * hate --> Regina(East, 750km)
     * up --> Edmonton(North, 300km)
 
-Here Banff and Kamloops are both west while Regina is east, the computer understands that "like" and "love" are similar but "love" is stronger while "hate" is completely opposite. The distance from the origin represents intensity. Similarly, the word "up" would be positioned north of Calgary (e.g., Edmonton) because "up" is a direction, whereas "like," "love," and "hate" are emotions. "Hate" is the negative of "like," but "up" is neither similar nor opposite—it exists in a separate dimension and hence a computer understands up is unrelated to the others.
+![alt text](example.png)
+
+Here Banff and Kamloops are both west while Regina is east, the computer understands that "like" and "love" are similar but "love" is stronger while "hate" is completely opposite. The distance from the origin represents intensity. Similarly, the word "up" would be positioned north of Calgary (e.g., Edmonton) because "up" is a direction, whereas "like," "love," and "hate" are emotions. "Hate" is the negative of "like," but "up" is neither similar nor opposite—it exists in a separate dimension and hence a computer understands up is unrelated to the others. 
 
 In the classmates.csv file, there are a number of interests posted by different people. When a computer processes those sentences by using embeddings, it can map entire sentences into a numerical space where similar sentences are closer together and unrelated sentences are farther apart. By getting these numeric coordinates for sentences (also known as Sentence Embeddings) it is now possible to tell whose interests are closer while whose interests are not similar.
 
